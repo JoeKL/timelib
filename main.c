@@ -56,6 +56,6 @@ int day_of_the_year(int day, int month, int year)
 
 int main()
 {
-    printf("Tag des Jahres: %i\n", day_of_the_year(31, 12, 2018));
+    printf("Tag des Jahres: %i\n", day_of_the_year(31, 12, 2020));
     return 0;
 }
