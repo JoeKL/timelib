@@ -69,6 +69,17 @@ int get_days_for_month(int month, int year){
 	return days[month - 1];
 }
 
+/**
+ * Die Funktion liest 3 Ganzzahlwerte (Integer) ein, für Tag, Monat und Jahr. Wenn das angegebene Datum
+	ungültig ist, wird erneut eingelesen, solange bis ein gültiges Datum eingegeben wurde.
+**/
+void input_date(int* day, int* month, int* year){
+	
+}
+
+/**
+ * Führt die Funktionen aus.
+ **/
 int main()
 {
     printf("Tag des Jahres: %i\n", day_of_the_year(28, 02, 2019));
