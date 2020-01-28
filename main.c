@@ -69,7 +69,6 @@ int get_days_for_month(int month, int year){
 	return days[month - 1];
 }
 
-
 int main()
 {
     printf("Tag des Jahres: %i\n", day_of_the_year(28, 02, 2019));
