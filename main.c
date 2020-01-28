@@ -69,6 +69,20 @@ int get_days_for_month(int month, int year){
 	return days[month - 1];
 }
 
+/**
+ * Die Funktion überprüft, ob ein eingegebenes Datum gültig ist. Daten vor dem 1.1.1582 sind ungültig, genauso
+ * wie alle Daten nach dem 31.12.2400. 
+ **/
+int exists_date(int day, int month, int year){
+	
+	if (!(month >= 1 && month <= 12))
+		return -1;
+
+	if(!(day >= 1 && day <= get_days_for_month(month, year)))
+		return -1;
+		
+}
+
 int main()
 {
     printf("Tag des Jahres: %i\n", day_of_the_year(28, 02, 2019));
