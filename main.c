@@ -8,12 +8,11 @@
 #include <stdlib.h>
 
 /**
- *
- *
+ * Die Funktion überprüft, ob ein gegebenes Jahr nach den Regeln des gregorianischen Kalender ein Schaltjahr
+ * ist. Bei Jahreszahlen vor dem Jahr 1582 wird ein Fehler zurückgegeben. 
  **/
 int is_leapyear(int year) {
-	// Pr�ft ob Jahr durch 4 teilbar und nicht durch 100 teilbar oder Jahr durch 400 teilbar ist
-	// Wenn ja, dann Schaltjahr
+
 	if(year < 1582) {
 		return -1;
 	}
@@ -27,8 +26,9 @@ int is_leapyear(int year) {
 }
 
 /**
- *
- *
+ * Die Funktion berechnet für ein gegebenes Datum des gregorianischen Kalenders bestehend aus Tag, Monat
+ * und Jahr die Nummer des Tages, gezählt von Jahresbeginn (1. Januar) an. Schaltjahre werden bei der
+ * Berechnung berücksichtigt. Ist das übergebene Datum ungültig, beträgt der Rückgabewert -1.
  **/
 int day_of_the_year(int day, int month, int year)
 {
@@ -60,6 +60,7 @@ int day_of_the_year(int day, int month, int year)
 
 	return days_amount;
 }
+
 
 int main()
 {
