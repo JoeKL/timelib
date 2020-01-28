@@ -22,8 +22,8 @@ int is_leapyear(int year) {
 	} else {
 		return 0;
 	}
-
 }
+
 
 /**
  * Die Funktion berechnet für ein gegebenes Datum des gregorianischen Kalenders bestehend aus Tag, Monat
@@ -32,6 +32,11 @@ int is_leapyear(int year) {
  **/
 int day_of_the_year(int day, int month, int year)
 {
+
+	if(exists_date(day, month, year) == 0){
+		return -1;
+	}
+
 	int days_amount = 0;
 
 	if (!(day >= 1 && day <= get_days_for_month(month, year)))
@@ -50,10 +55,11 @@ int day_of_the_year(int day, int month, int year)
 	return days_amount;
 }
 
+
 /**
  * Die Funktion bestimmt für einen gegebenen Monat eines gegebenen Jahres, wie viele Tage der Monat hat. Der
  * Wert des Monats muss zwischen 1 und 12 liegen. Schaltjahre werden berücksichtigt.
-**/
+ **/
 int get_days_for_month(int month, int year){
 	
 	int days[12] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
@@ -69,13 +75,34 @@ int get_days_for_month(int month, int year){
 	return days[month - 1];
 }
 
+
+/**
+ * Die Funktion überprüft, ob ein eingegebenes Datum gültig ist. Daten vor dem 1.1.1582 sind ungültig, genauso
+ * wie alle Daten nach dem 31.12.2400. 
+ **/
+int exists_date(int day, int month, int year){
+	
+	if (!(month >= 1 && month <= 12))
+		return 0;
+
+	if(!(day >= 1 && day <= get_days_for_month(month, year)))
+		return 0;
+
+	if(!( (day >= 1 && month >= 1 && year >= 1582) && (day <= 31 && month <= 12 && year <= 2400) ))
+		return 0;
+
+	return 1;
+}
+
+
 /**
  * Die Funktion liest 3 Ganzzahlwerte (Integer) ein, für Tag, Monat und Jahr. Wenn das angegebene Datum
-	ungültig ist, wird erneut eingelesen, solange bis ein gültiges Datum eingegeben wurde.
-**/
+ *	ungültig ist, wird erneut eingelesen, solange bis ein gültiges Datum eingegeben wurde.
+ **/
 void input_date(int* day, int* month, int* year){
 	
 }
+
 
 /**
  * Führt die Funktionen aus.
