@@ -22,8 +22,8 @@ int is_leapyear(int year) {
 	} else {
 		return 0;
 	}
-
 }
+
 
 /**
  * Die Funktion berechnet für ein gegebenes Datum des gregorianischen Kalenders bestehend aus Tag, Monat
@@ -32,6 +32,11 @@ int is_leapyear(int year) {
  **/
 int day_of_the_year(int day, int month, int year)
 {
+
+	if(exists_date(day, month, year) == 0){
+		return -1;
+	}
+
 	int days_amount = 0;
 
 	if (!(day >= 1 && day <= get_days_for_month(month, year)))
@@ -49,6 +54,7 @@ int day_of_the_year(int day, int month, int year)
 
 	return days_amount;
 }
+
 
 /**
  * Die Funktion bestimmt für einen gegebenen Monat eines gegebenen Jahres, wie viele Tage der Monat hat. Der
@@ -69,6 +75,7 @@ int get_days_for_month(int month, int year){
 	return days[month - 1];
 }
 
+
 /**
  * Die Funktion überprüft, ob ein eingegebenes Datum gültig ist. Daten vor dem 1.1.1582 sind ungültig, genauso
  * wie alle Daten nach dem 31.12.2400. 
@@ -76,13 +83,21 @@ int get_days_for_month(int month, int year){
 int exists_date(int day, int month, int year){
 	
 	if (!(month >= 1 && month <= 12))
-		return -1;
+		return 0;
 
 	if(!(day >= 1 && day <= get_days_for_month(month, year)))
-		return -1;
-		
+		return 0;
+
+	if(!( (day >= 1 && month >= 1 && year >= 1582) && (day <= 31 && month <= 12 && year <= 2400) ))
+		return 0;
+
+	return 1;
 }
 
+
+/**
+ * Diese Funktion führt die Funktionen aus.
+ **/
 int main()
 {
     printf("Tag des Jahres: %i\n", day_of_the_year(28, 02, 2019));
