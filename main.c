@@ -26,40 +26,9 @@ int is_leapyear(int year) {
 
 
 /**
- * Die Funktion berechnet für ein gegebenes Datum des gregorianischen Kalenders bestehend aus Tag, Monat
- * und Jahr die Nummer des Tages, gezählt von Jahresbeginn (1. Januar) an. Schaltjahre werden bei der
- * Berechnung berücksichtigt. Ist das übergebene Datum ungültig, beträgt der Rückgabewert -1.
- **/
-int day_of_the_year(int day, int month, int year)
-{
-
-	if(exists_date(day, month, year) == 0){
-		return -1;
-	}
-
-	int days_amount = 0;
-
-	if (!(day >= 1 && day <= get_days_for_month(month, year)))
-		return -1;
-
-	if (!(month >= 1 && month <= 12))
-		return -1;
-
-	int i = 1;
-	for (i; i <= month - 1; i++) {
-		days_amount += get_days_for_month(i, year);
-	}
-
-	days_amount += day;
-
-	return days_amount;
-}
-
-
-/**
  * Die Funktion bestimmt für einen gegebenen Monat eines gegebenen Jahres, wie viele Tage der Monat hat. Der
  * Wert des Monats muss zwischen 1 und 12 liegen. Schaltjahre werden berücksichtigt.
-**/
+ **/
 int get_days_for_month(int month, int year){
 	
 	int days[12] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
@@ -95,11 +64,72 @@ int exists_date(int day, int month, int year){
 }
 
 
+
 /**
- * Diese Funktion führt die Funktionen aus.
+ * Die Funktion berechnet für ein gegebenes Datum des gregorianischen Kalenders bestehend aus Tag, Monat
+ * und Jahr die Nummer des Tages, gezählt von Jahresbeginn (1. Januar) an. Schaltjahre werden bei der
+ * Berechnung berücksichtigt. Ist das übergebene Datum ungültig, beträgt der Rückgabewert -1.
+ **/
+int day_of_the_year(int day, int month, int year)
+{
+
+	if(exists_date(day, month, year) == 0){
+		return -1;
+	}
+
+	int days_amount = 0;
+
+	if (!(day >= 1 && day <= get_days_for_month(month, year)))
+		return -1;
+
+	if (!(month >= 1 && month <= 12))
+		return -1;
+
+	int i = 1;
+	for (i; i <= month - 1; i++) {
+		days_amount += get_days_for_month(i, year);
+	}
+
+	days_amount += day;
+
+	return days_amount;
+}
+
+/**
+ * Die Funktion liest 3 Ganzzahlwerte (Integer) ein, für Tag, Monat und Jahr. Wenn das angegebene Datum
+ *	ungültig ist, wird erneut eingelesen, solange bis ein gültiges Datum eingegeben wurde.
+ **/
+void input_date(int* day, int* month, int* year){
+	do{
+		*day = 0, *month = 0, *year = 0;
+
+		printf("Please input day: ");
+		scanf("%i",day);
+		fflush(stdin);
+
+		printf("Please input month: ");
+		scanf("%i",month);
+		fflush(stdin);
+		
+		printf("Please input year: ");
+		scanf("%i",year);
+		fflush(stdin);
+
+	} while (exists_date(*day, *month, *year) != 1);
+}
+
+
+/**
+ * Führt die Funktionen aus.
  **/
 int main()
 {
-    printf("Tag des Jahres: %i\n", day_of_the_year(28, 02, 2019));
+	int day, month, year;
+
+	input_date(&day, &month, &year);
+
+	printf("Date: %i.%i.%i\n", day, month, year);
+
+    printf("Is day of year no.: %i\n", day_of_the_year(day, month, year));
     return 0;
 }
