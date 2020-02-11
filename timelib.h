@@ -27,6 +27,19 @@ int exists_date(int day, int month, int year);
 int day_of_the_year(int day, int month, int year);
 
 /**
+ * 
+ * 
+ **/
+int calc_weekday(int day, int month, int year);
+
+
+/**
+ * 
+ * 
+ **/
+int calc_week(int day, int month, int year);
+
+/**
  * Die Funktion liest 3 Ganzzahlwerte (Integer) ein, für Tag, Monat und Jahr. Wenn das angegebene Datum
  *	ungültig ist, wird erneut eingelesen, solange bis ein gültiges Datum eingegeben wurde.
  **/

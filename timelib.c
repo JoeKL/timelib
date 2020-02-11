@@ -88,6 +88,33 @@ int day_of_the_year(int day, int month, int year){
 	return days_amount;
 }
 
+
+/**
+ * 
+ * Wochentags berechnung bis Jahr 1752
+ **/
+int calc_weekday(int day, int month, int year){
+  static int t[] = {0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4};
+
+    year -= month < 3;
+
+  return (year + year/4 - year/100 + year/400 + t[month-1] + day) % 7;
+}
+
+
+
+/**
+ * 
+ * >> FUNKTIONIERT NICHT <<
+ **/
+int calc_week(int day, int month, int year){
+	int dayOfTheYear = day_of_the_year(day, month, year);
+	int WeekNo = (int)dayOfTheYear/7;
+
+	return WeekNo;
+}
+
+
 /**
  * Die Funktion liest 3 Ganzzahlwerte (Integer) ein, für Tag, Monat und Jahr. Wenn das angegebene Datum
  *	ungültig ist, wird erneut eingelesen, solange bis ein gültiges Datum eingegeben wurde.
