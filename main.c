@@ -100,7 +100,22 @@ int day_of_the_year(int day, int month, int year)
  *	ungültig ist, wird erneut eingelesen, solange bis ein gültiges Datum eingegeben wurde.
  **/
 void input_date(int* day, int* month, int* year){
-	
+	do{
+		*day = 0, *month = 0, *year = 0;
+
+		printf("Please input day: ");
+		scanf("%i",day);
+		fflush(stdin);
+
+		printf("Please input month: ");
+		scanf("%i",month);
+		fflush(stdin);
+		
+		printf("Please input year: ");
+		scanf("%i",year);
+		fflush(stdin);
+
+	} while (exists_date(*day, *month, *year) != 1);
 }
 
 
@@ -109,6 +124,12 @@ void input_date(int* day, int* month, int* year){
  **/
 int main()
 {
-    printf("Tag des Jahres: %i\n", day_of_the_year(28, 02, 2019));
+	int day, month, year;
+
+	input_date(&day, &month, &year);
+
+	printf("Date: %i.%i.%i\n", day, month, year);
+
+    printf("Is day of year no.: %i\n", day_of_the_year(day, month, year));
     return 0;
 }
