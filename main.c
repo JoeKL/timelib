@@ -26,37 +26,6 @@ int is_leapyear(int year) {
 
 
 /**
- * Die Funktion berechnet für ein gegebenes Datum des gregorianischen Kalenders bestehend aus Tag, Monat
- * und Jahr die Nummer des Tages, gezählt von Jahresbeginn (1. Januar) an. Schaltjahre werden bei der
- * Berechnung berücksichtigt. Ist das übergebene Datum ungültig, beträgt der Rückgabewert -1.
- **/
-int day_of_the_year(int day, int month, int year)
-{
-
-	if(exists_date(day, month, year) == 0){
-		return -1;
-	}
-
-	int days_amount = 0;
-
-	if (!(day >= 1 && day <= get_days_for_month(month, year)))
-		return -1;
-
-	if (!(month >= 1 && month <= 12))
-		return -1;
-
-	int i = 1;
-	for (i; i <= month - 1; i++) {
-		days_amount += get_days_for_month(i, year);
-	}
-
-	days_amount += day;
-
-	return days_amount;
-}
-
-
-/**
  * Die Funktion bestimmt für einen gegebenen Monat eines gegebenen Jahres, wie viele Tage der Monat hat. Der
  * Wert des Monats muss zwischen 1 und 12 liegen. Schaltjahre werden berücksichtigt.
  **/
@@ -94,6 +63,37 @@ int exists_date(int day, int month, int year){
 	return 1;
 }
 
+
+
+/**
+ * Die Funktion berechnet für ein gegebenes Datum des gregorianischen Kalenders bestehend aus Tag, Monat
+ * und Jahr die Nummer des Tages, gezählt von Jahresbeginn (1. Januar) an. Schaltjahre werden bei der
+ * Berechnung berücksichtigt. Ist das übergebene Datum ungültig, beträgt der Rückgabewert -1.
+ **/
+int day_of_the_year(int day, int month, int year)
+{
+
+	if(exists_date(day, month, year) == 0){
+		return -1;
+	}
+
+	int days_amount = 0;
+
+	if (!(day >= 1 && day <= get_days_for_month(month, year)))
+		return -1;
+
+	if (!(month >= 1 && month <= 12))
+		return -1;
+
+	int i = 1;
+	for (i; i <= month - 1; i++) {
+		days_amount += get_days_for_month(i, year);
+	}
+
+	days_amount += day;
+
+	return days_amount;
+}
 
 /**
  * Die Funktion liest 3 Ganzzahlwerte (Integer) ein, für Tag, Monat und Jahr. Wenn das angegebene Datum
