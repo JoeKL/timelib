@@ -51,9 +51,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 timelib.cbp
-timelib.cbp
-timelib.cbp
-.vs/ProjectSettings.json
-.vs/slnx.sqlite
-.vs/tasks.vs.json
-timelib.cbp
+.vs/
+.git/
+timelib.code-workspace
