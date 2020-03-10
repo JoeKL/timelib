@@ -82,7 +82,7 @@ Die Funktion überprüft, ob ein gegebenes Jahr nach den Regeln des gregorianisc
 
 <details>
 <summary>Programmablaufplan</summary>
-!(/PAP/is_leapyear.png)
+![is_leapyear](/PAP/is_leapyear.png)
 
 </details>
 
