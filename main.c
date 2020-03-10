@@ -1,26 +1,35 @@
 /**
- *
- *
- *
- **/
+ * @file main.c
+ * @author Niko Tepe
+ * @brief 
+ * @version 0.1
+ * @date 2020-03-10
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "timelib.h"
 
 /**
- * Führt die Funktionen aus.
- **/
+ * @brief Main Funktion
+ * 
+ * @return int 
+ */
 
 int main()
 {
-	int day, month, year;
+	struct date CurrentDate;
+	
+	// input_date_struct(CurrentDate);
+	CurrentDate = input_date();
 
-	input_date(&day, &month, &year);
-	printf("Date: %i.%i.%i\n", day, month, year);
-	printf("Weekday is: %i\n", calc_weekday(day, month, year));
-	printf("WeekNo is: %i\n", calc_week(day, month, year));
+	printf("Date: %i.%i.%i\n", CurrentDate.day, CurrentDate.month, CurrentDate.year);
+	printf("Weekday is: %i\n", calc_weekday(CurrentDate));
 
-    printf("Is day of year no.: %i\n", day_of_the_year(day, month, year));
+    printf("Is day of year no.: %i\n", day_of_the_year(CurrentDate));
+
     return 0;
 }
