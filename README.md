@@ -76,8 +76,15 @@ Die Funktion liest 3 Ganzzahlwerte (Integer) ein, für Tag, Monat und Jahr. Wenn
 - ##### Returns
     - struct date
 
+
 #### int is\_leapyear (int  _year_)
 Die Funktion überprüft, ob ein gegebenes Jahr nach den Regeln des gregorianischen Kalender ein Schaltjahr ist. Bei Jahreszahlen vor dem Jahr 1582 wird ein Fehler zurückgegeben.
+
+<details>
+<summary>Programmablaufplan</summary>
+!(/PAP/is_leapyear.png)
+
+</details>
 
 - ##### Parameters
     - _year_
