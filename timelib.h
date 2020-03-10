@@ -56,7 +56,7 @@ int exists_date(struct date VarDate);
 int day_of_the_year(struct date VarDate);
 
 /**
- * @brief Diese Funktion gibt den Wochentag des übergebenen Datums zurück.
+ * @brief Diese Funktion gibt den Wochentag des übergebenen Datums zurück. Sollte das Jahr kleiner als 1752 oder größer als 2400 sein, so gibt die Funktion -1 zurück.
  * 
  * @param VarDate 
  * @return int 
