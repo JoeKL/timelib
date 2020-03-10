@@ -21,14 +21,17 @@
 
 int main()
 {
+	//Erstelle date struct und lese Tastatureingabe mit input_date ein
 	struct date CurrentDate;
-	
-	// input_date_struct(CurrentDate);
 	CurrentDate = input_date();
 
+	//Gebe Date aus
 	printf("Date: %i.%i.%i\n", CurrentDate.day, CurrentDate.month, CurrentDate.year);
+
+	// gebe Wochentag aus
 	printf("Weekday is: %i\n", calc_weekday(CurrentDate));
 
+	// Gebe Tag des Jahres aus
     printf("Is day of year no.: %i\n", day_of_the_year(CurrentDate));
 
     return 0;
